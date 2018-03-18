@@ -8,22 +8,21 @@ private int year;
 
 public Zodiac(String dob){this.rawDate=dob;}
 
-public int[] convertToIntegers(List<Integer> arrayList){
+private int[] convertToIntegers(List<Integer> arrayList){
   int[] list = new int[arrayList.size()];
   Iterator<Integer> iterator = arrayList.iterator();
-  for (int i = 0; i < list.length; i++) list[i] = iterator.next().intValue();
+  for (int i=0;i<list.length;i++) list[i]=iterator.next().intValue();
   return list;
 }
 
 private int[] getDividedDate(){
   String[] fields=rawDate.split("-");
   List <Integer> date = new ArrayList<Integer>();
-  for (int i=0; i<fields.length; i++) date.add(Integer.parseInt(fields[i]));
+  for (String field: fields) date.add(Integer.parseInt(field));
   return convertToIntegers(date);
 }
 
-private boolean isAfter(){
-  return ends.after(dateOfBirth);}
+private boolean isAfter(){return ends.after(dateOfBirth);}
 private boolean isBefore(){return starts.before(dateOfBirth);}
 private boolean isEqual(){
   return starts.equals(dateOfBirth)||ends.equals(dateOfBirth);
